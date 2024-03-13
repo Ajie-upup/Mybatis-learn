@@ -20,7 +20,7 @@ public class JDBCDemo {
 
             // 通过驱动管理类获取数据库链接
             connection = DriverManager.
-                    getConnection("jdbc:mysql://localhost:3306/db-mybatis?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC", "root", "root");
+                    getConnection("jdbc:mysql://localhost:3306/db-mybatis?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC", "root", "root");
             // 定义sql语句  ？表示占位符
             String sql = "select * from user where username = ?";
             // 获取预处理 statement

@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>class01-MyJDBC</module>
+        <module>class02-MybatisDemo</module>
     </modules>
 
     <properties>
