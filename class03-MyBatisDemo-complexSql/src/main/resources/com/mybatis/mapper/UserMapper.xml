@@ -15,4 +15,13 @@
         </where>
     </select>
 
+    <select id="findByIds" parameterType="list" resultType="user">
+        select * from user
+        <where>
+            <foreach collection="list" open="id in (" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+
 </mapper>

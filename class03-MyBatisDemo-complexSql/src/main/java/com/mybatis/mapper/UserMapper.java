@@ -8,4 +8,6 @@ public interface UserMapper {
 
     User findByCondition(User user);
 
+    List<User> findByIds(List<Integer> ids);
+
 }
