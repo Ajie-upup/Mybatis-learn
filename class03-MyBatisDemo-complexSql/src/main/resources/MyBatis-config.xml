@@ -29,6 +29,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="com/mybatis/mapper/UserMapper.xml"/>
+        <!-- <mapper resource="com/mybatis/mapper/UserMapper.xml"/>-->
+        <package name="com.mybatis.mapper"/>
     </mappers>
 </configuration>

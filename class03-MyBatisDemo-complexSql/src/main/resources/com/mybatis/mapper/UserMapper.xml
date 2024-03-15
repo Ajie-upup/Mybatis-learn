@@ -24,4 +24,40 @@
         </where>
     </select>
 
+    <resultMap id="userOrderMap" type="user">
+        <result column="id" property="id"></result>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <collection property="orderList" ofType="order">
+            <result column="oid" property="id"></result>
+            <result column="ordertime" property="orderTime"></result>
+            <result column="mount" property="mount"></result>
+        </collection>
+    </resultMap>
+
+    <select id="selectUserWithOrder" resultMap="userOrderMap">
+        select *, o.id oid
+        from `user` u
+                 left join `order` o
+                           on u.id = o.uid
+    </select>
+
+    <resultMap id="userRoleMap" type="user">
+        <result column="id" property="id"></result>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <collection property="roleList" ofType="role">
+            <result column="rid" property="id"></result>
+            <result column="rolename" property="roleName"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findUserWithRole" resultMap="userRoleMap">
+        select u.*, r.*, r.id rid
+        from `user` u
+                 left join `user_role` ur on u.id = ur.user_id
+                 left join `role` r
+        on ur.role_id = r.id
+    </select>
+
 </mapper>

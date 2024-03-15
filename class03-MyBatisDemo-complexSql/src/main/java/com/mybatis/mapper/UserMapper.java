@@ -10,4 +10,7 @@ public interface UserMapper {
 
     List<User> findByIds(List<Integer> ids);
 
+    List<User> selectUserWithOrder();
+
+    List<User> findUserWithRole();
 }
