@@ -12,6 +12,7 @@
         <module>class01-MyJDBC</module>
         <module>class02-MybatisDemo</module>
         <module>class03-MyBatisDemo-complexSql</module>
+        <module>class04-MybatisDemo-Annotation</module>
     </modules>
 
     <properties>
