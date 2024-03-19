@@ -6,6 +6,13 @@
     <!--  加载外部 properties 文件,必须放置在 configuration 文件首位  -->
     <properties resource="jdbc.properties"></properties>
 
+    <settings>
+        <!-- 打印sql日志 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--  全局开启二级缓存 -->
+<!--        <setting name="cacheEnabled" value="true"/>-->
+    </settings>
+
     <typeAliases>
         <!--    给单个实体类起别名    -->
         <!--        <typeAlias type="com.mybatis.domain.User" alias="user"></typeAlias>-->
