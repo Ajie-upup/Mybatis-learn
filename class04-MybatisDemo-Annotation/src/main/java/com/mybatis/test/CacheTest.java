@@ -1,5 +1,6 @@
 package com.mybatis.test;
 
+import com.mybatis.domain.Order;
 import com.mybatis.domain.User;
 import com.mybatis.mapper.IOrderMapper;
 import com.mybatis.mapper.IUserMapper;
@@ -110,4 +111,29 @@ public class CacheTest {
         System.out.println(u2);
         sqlSession2.close();
     }
+
+
+    @Test
+    public void testRedisCache() {
+        SqlSession sqlSession1 = sqlSessionFactory.openSession();
+        SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        SqlSession sqlSession3 = sqlSessionFactory.openSession();
+        IOrderMapper mapper1 = sqlSession1.getMapper(IOrderMapper.class);
+        IOrderMapper mapper2 = sqlSession2.getMapper(IOrderMapper.class);
+        IOrderMapper mapper3 = sqlSession3.getMapper(IOrderMapper.class);
+
+        Order order1 = mapper1.selectOrderById(1);
+        // 清空⼀级缓存
+        sqlSession1.close();
+
+        Order order = new Order();
+        order.setId(3);
+        order.setMount(1111.111);
+        mapper3.updateOrderById(order);
+
+        sqlSession3.commit();
+        Order order2 = mapper2.selectOrderById(1);
+        System.out.println(order2 == order2);
+    }
+
 }
