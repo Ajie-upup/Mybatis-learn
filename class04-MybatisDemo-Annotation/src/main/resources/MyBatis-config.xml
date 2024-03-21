@@ -10,7 +10,7 @@
         <!-- 打印sql日志 -->
         <setting name="logImpl" value="STDOUT_LOGGING"/>
         <!--  全局开启二级缓存 -->
-<!--        <setting name="cacheEnabled" value="true"/>-->
+        <!--        <setting name="cacheEnabled" value="true"/>-->
     </settings>
 
     <typeAliases>
@@ -21,6 +21,11 @@
     </typeAliases>
 
     <plugins>
+        <!--注意：分⻚助⼿的插件 配置在通⽤馆mapper之前-->
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!--  指定方言 -->
+            <property name="dialect" value="mysql"/>
+        </plugin>
         <plugin interceptor="com.mybatis.plugin.MyPlugin">
             <property name="whale" value="whale-test"/>
         </plugin>
